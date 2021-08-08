@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Banner from '../Components/Banner'
 import Header from '../Components/Header'
 
 export default function Home() {
@@ -8,11 +9,8 @@ export default function Home() {
         <title>Airbnb Clone</title>
         <link rel="icon" href="/" />
       </Head>
-
-      <main className="">
-        <Header/>
-      </main>
-
+      <Header/>
+      <Banner/>
     </div>
   )
 }

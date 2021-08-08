@@ -3,7 +3,7 @@ import {SearchIcon,GlobeAltIcon,MenuIcon,UserCircleIcon} from '@heroicons/react/
 import logo from '../Images/Airbnb.png'
 function Header() {
     return (
-       <header className="sticky items-center top-0 p-5 grid grid-cols-3 bg-white shadow-md  px-3 sm:px-5 md:px-10">
+       <header className="sticky z-50 items-center top-0 p-5 grid grid-cols-3 bg-white shadow-md  px-3 sm:px-5 md:px-10">
            {/* Left--Logo */}
            <div className="relative flex items-center h-10  cursor-pointer my-auto">
                <Image
