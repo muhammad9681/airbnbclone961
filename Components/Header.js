@@ -6,12 +6,12 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import { useRouter } from 'next/router'
-function Header() {
+function Header({ placeholder }) {
     const [searchInput, setsearchInput] = useState("");
     const [startDate, setstartDate] = useState(new Date());
     const [endDate, setendDate] = useState(new Date());
     const [searchinputvalue,setsearchinputvalue] = useState("");
-    const [noofGuest,setnoofGuest]=useState(1)
+    const [noofGuest,setnoofGuest]=useState("1")
     const router=useRouter();
     const handlechange = (ranges) => {
         setstartDate(ranges.selection.startDate);
@@ -21,16 +21,15 @@ function Header() {
         setsearchInput("")
     }
     const requestsearchpage=()=>{
-        console.log("Muhammad Ali")
         router.push({
             pathname:'/search',
             query:{
-                Location:searchInput,
+                location:searchInput,
                 startDate:startDate.toISOString(),
                 endDate:endDate.toISOString(),
                 noofGuest:noofGuest}
         });
-       
+        resetInput();
     }
     const selectionRange = {
         startDate,
@@ -48,7 +47,7 @@ function Header() {
             </div>
             {/* Middle --Search */}
             <div className="flex items-center border-2 rounded-full pl-2 md:shadow-sm ">
-                <input spellCheck="false" value={searchInput} onChange={(event) => setsearchInput(event.target.value)} placeholder="Start your search" className=" flex-grow outline-none bg-transparent text-xs	sm:text-sm text-gray-400 placeholder-gray-300"></input>
+                <input spellCheck="false" value={searchInput} onChange={(event) => setsearchInput(event.target.value)} placeholder={placeholder || "Start your search"} className=" flex-grow outline-none bg-transparent text-xs	sm:text-sm text-gray-400 placeholder-gray-300"></input>
                {searchInput ?<XIcon onClick={resetInput} className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer m-1 active:scale-50 transition duration-175" /> 
                :<SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer m-1 active:scale-50 transition duration-175"/>} 
             </div>
@@ -70,7 +69,7 @@ function Header() {
                         onChange={handlechange} />
                  <div className="flex flex-row justify-center">
                      <h2 className="text-2xl text-semibold flex-grow">Number of Guests</h2>
-                     <input className="w-12 outline-none pl-2 text-red-500" min="1" onChange={(e)=>setnoofGuest(e.target.value)} type="number" step="1"/>
+                     <input className="w-12 outline-none pl-2 text-red-500" min="1" value={noofGuest} onChange={(e)=>setnoofGuest(e.target.value)} type="number" step="1"/>
                      <UsersIcon className=" flex justify-center my-auto h-6"/>
                  </div>
                  <div className="flex">
