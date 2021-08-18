@@ -4,6 +4,7 @@ import { StarIcon } from "@heroicons/react/solid"
 function InfoCard({ description, img, location, star, lat, long, title, total, price }) {
     return (
         <div className=" cmb-2  grid sm:grid-cols-2 sm:grid-col-2 md:grid-cols-4 px-5 py-5 hover:shadow-2xl">
+            <title>Search</title>
             <div className="relative  h-44  md:h-56 lg:h-64	sm:col-span-1 ">
                 <Image src={img} layout="fill" objectFit="cover" className="rounded-xl" />
             </div>
